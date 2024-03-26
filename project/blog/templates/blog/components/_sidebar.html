@@ -1,0 +1,9 @@
+{% load blog_tags %}
+
+<div class="list-group text-center">
+    <a href="{% url 'index' %}" class="list-group-item list-group-item-action border-dark {% if 'Blog Page' in title %} bg-dark text-light {% endif %}">All categories</a>
+    {% get_categories as categories %}
+    {% for category in categories %}
+    <a href="{{ category.get_absolute_url }}" class="list-group-item list-group-item-action border-dark  bg-dark text-light{% if category.title in title %} bg-dark text-light {% endif %}">{{ category.title }}</a>
+    {% endfor %}
+</div>
